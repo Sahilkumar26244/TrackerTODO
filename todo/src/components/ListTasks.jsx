@@ -8,9 +8,9 @@ function ListTasks({tasks,setTasks}) {
    const [closed,setClosed] = useState([]);
 
    useEffect(() => {
-    const fTodos = tasks.filter((task) => task.status === "todo");
-    const fInProgress = tasks.filter((task) => task.status === "inprogress");
-    const fClosed = tasks.filter((task) => task.status === "closed");
+    const fTodos = tasks?.filter((task) => task.status === "todo");
+    const fInProgress = tasks?.filter((task) => task.status === "inprogress");
+    const fClosed = tasks?.filter((task) => task.status === "closed");
 
     setTodos(fTodos);
     setInProgress(fInProgress);
@@ -71,8 +71,8 @@ const Section = ({status, tasks,setTasks,todos,inProgress,closed}) => {
     }
     return (
         <div ref={drop} className={`w-64 rounded-md p-2 ${isOver ? "bg-slate-200" :""} `} >
-           <Header text={text} bg={bg} count={tasksToMap.length} /> 
-           {tasksToMap.length > 0 && tasksToMap.map(task => <SingleTask key={task.id} tasks={tasks} setTasks={setTasks} task={task} />)}
+           <Header text={text} bg={bg} count={tasksToMap?.length} /> 
+           {tasksToMap?.length > 0 && tasksToMap.map(task => <SingleTask key={task.id} tasks={tasks} setTasks={setTasks} task={task} />)}
         </div>
     )
 };
@@ -98,7 +98,7 @@ const SingleTask = ({tasks,task,setTasks}) => {
       console.log(isDragging);
 
     const handleRemove = (id) => {
-        const fTasks = tasks.filter(t => t.id !== id);
+        const fTasks = tasks?.filter(t => t.id !== id);
         localStorage.setItem("tasks",JSON.stringify(fTasks));
 
         setTasks(fTasks);
