@@ -95,7 +95,7 @@ const SingleTask = ({tasks,task,setTasks}) => {
           isDragging: !!monitor.isDragging()
         })
       }))
-      console.log(isDragging);
+    //   console.log(isDragging);
 
     const handleRemove = (id) => {
         const fTasks = tasks?.filter(t => t.id !== id);
